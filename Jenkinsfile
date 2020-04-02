@@ -36,7 +36,7 @@ pipeline{
 			  docker image build -t $IMAGE_ID .
               docker tag $IMAGE_ID $IMAGE
 			  docker push $IMAGE
-			  docker rmi $IMAGE_ID $IMAGE '''
+			  docker rmi openjdk:8u212-jdk-alpine3.9 $IMAGE_ID $IMAGE '''
        }
 	}
 	stage('updating latest image'){
