@@ -32,7 +32,7 @@ pipeline{
             steps {
              sh label: '', script: '''pwd
 			 whoami
-			 sudo scp /var/lib/jenkins/workspace/petclinic/target/spring-petclinic-2.2.0.BUILD-SNAPSHOT.jar /var/lib/jenkins/workspace/petclinic
+			 sudo scp /var/lib/jenkins/workspace/$JOB_NAME/target/spring-petclinic-2.2.0.BUILD-SNAPSHOT.jar /var/lib/jenkins/workspace/$JOB_NAME
 			  docker image build -t $IMAGE_ID .
               docker tag $IMAGE_ID $IMAGE
 			  docker push $IMAGE
