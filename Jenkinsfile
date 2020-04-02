@@ -20,7 +20,7 @@ pipeline{
         }
         stage('archive artifacts'){
             steps{
-                archiveArtifacts '*/*.jar'
+                archiveArtifacts 'target/spring-petclinic-2.2.0.BUILD-SNAPSHOT.jar'
             }
         }
         stage('junit reports'){
