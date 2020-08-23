@@ -28,6 +28,19 @@ pipeline{
                 junit 'target/surefire-reports/*.xml'
             }
         }
+
+		stage('SonarQube analysis') {
+ 			steps{
+    // performing sonarqube analysis with "withSonarQubeENV(<Name of Server configured in Jenkins>)"
+       withSonarQubeEnv('petclinic') {
+       // requires SonarQube Scanner for Maven 3.2+
+       sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
+      sh 'mvn sonar:sonar \
+  -Dsonar.host.url=http://13.126.223.192:9000 \
+  -Dsonar.login=f01b79ae83096855a6918e2a530c455f5ccc2ef8'
+ 	    }
+      }	
+   }
 		stage('Pushing image to DockerHub') {
             steps {
              sh label: '', script: '''pwd
